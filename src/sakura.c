@@ -361,7 +361,7 @@ struct terminal {
 #define FADE_PERCENT 60 
 #define DEFAULT_ADD_TAB_ACCELERATOR  (GDK_CONTROL_MASK|GDK_SHIFT_MASK)
 #define DEFAULT_DEL_TAB_ACCELERATOR  (GDK_CONTROL_MASK|GDK_SHIFT_MASK)
-#define DEFAULT_SWITCH_TAB_ACCELERATOR  (GDK_CONTROL_MASK)
+#define DEFAULT_SWITCH_TAB_ACCELERATOR  (GDK_MOD1_MASK)
 #define DEFAULT_MOVE_TAB_ACCELERATOR (GDK_CONTROL_MASK|GDK_SHIFT_MASK)
 #define DEFAULT_COPY_ACCELERATOR  (GDK_CONTROL_MASK|GDK_SHIFT_MASK)
 #define DEFAULT_SCROLLBAR_ACCELERATOR  (GDK_CONTROL_MASK|GDK_SHIFT_MASK)
@@ -597,6 +597,7 @@ sakura_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 	/* Switch tab keybinding pressed (numbers or next/prev) */
 	/* In cases when the user configured accelerators like these ones:
 		switch_tab_accelerator=4  for ctrl+next[prev]_tab_key
+		switch_tab_accelerator=8  for alt+next[prev]_tab_key
 		move_tab_accelerator=5  for ctrl+shift+next[prev]_tab_key
 	   move never works, because switch will be processed first, so it needs to be fixed with the following condition */
 	if ( ((event->state & sakura.switch_tab_accelerator) == sakura.switch_tab_accelerator) && 
